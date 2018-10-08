@@ -41,21 +41,15 @@ public class ProdutoController {
     	return new ModelAndView("mostrarProduto").addObject("produto", produto);
     }
     
-       
-    
-   /* @PostMapping("/getProduto")
-    public ModelAndView salvar(@ModelAttribute("produto") Produto produto, 
-            RedirectAttributes redirectAttributes) {
-
-        redirectAttributes.addFlashAttribute("produto", produto);
-        ModelAndView retorno = new ModelAndView("redirect:/produto/resultado");
-        return retorno;
-    }
-    
-    @GetMapping("/resultado")
-    public ModelAndView mostrarResultado() {
-        return new ModelAndView("pessoa/resultado");
+    /*
+    @PostMapping(value="/getProduto", params="action=edit")
+    public ModelAndView editar02(@ModelAttribute("produto")Produto produto) throws SQLException {
+    	ProdutoService service = new ProdutoService();
+    	produto = service.pegarProduto(produto.getId());
+    	return new ModelAndView("mostrarProduto").addObject("produto", produto);
     }*/
+    
+
     
     
 }

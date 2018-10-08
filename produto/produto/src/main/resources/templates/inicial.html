@@ -17,7 +17,8 @@
                         <h1>Gerenciamento de Produtos</h1>
                     </div>
                 </div>
-                <div class="table-responsive-sm">
+                <form class="form" th:action="@{/produto/getProduto}" th:object="${produto}" method="post">
+                
                     <table class="table table-bordered">
                         <tr>
                             <th>Nome</th>
@@ -27,13 +28,12 @@
                         <tr th:each="produto : ${produtos}">
                             <td><h6 th:text="${produto.nome}"></h6></td>
                             <td><h6 th:text="${produto.disponivel}"></h6></td>
-                            <td> <button type="submit" class="btn btn-primary">Editar</button>
-                             <button type="button" class="btn btn-warning">Remover</button></td>
+                            <td> <button type="submit" class="btn btn-primary" name="action" value="edit">Editar</button>
+                             <button type="button" class="btn btn-warning" name="action" value="remove">Remover</button></td>
                         </tr>
                     </table>
-                    
-                </div>
-            </div>
+            	</form>
+			</div>
         </main>
     </body>
 </html>

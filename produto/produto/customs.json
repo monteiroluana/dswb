@@ -1,0 +1,13 @@
+{
+    "elements": {},
+    "attributes": {
+        "th:text": {
+            "context": "h2"
+        },
+        "th:object": {},
+        "th:src": {
+            "context": "img"
+        },
+        "th:each": {}
+    }
+}

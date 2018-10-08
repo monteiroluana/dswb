@@ -15,6 +15,7 @@ public class ProdutoApplication {
 
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         SpringApplication.run(ProdutoApplication.class, args);
+        //inserirProd();
     }
 
     public static void listarCateg() throws ClassNotFoundException, SQLException {

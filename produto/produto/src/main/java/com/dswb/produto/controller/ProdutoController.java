@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-
 @Controller
 @RequestMapping("/produto")
 public class ProdutoController {
@@ -27,29 +26,39 @@ public class ProdutoController {
     }
 
     @GetMapping("/prod/{id}")
-    public ModelAndView obter(@PathVariable("id") int id)throws SQLException {
+    public ModelAndView obter(@PathVariable("id") int id) throws SQLException {
         ProdutoService service = new ProdutoService();
         Produto produto = service.pegarProduto(id);
         return new ModelAndView("mostrarProduto").addObject("produto", produto);
     }
-    
-    
-    @RequestMapping(value="/getProduto", method=RequestMethod.POST, params="action=edit")
-    public ModelAndView editar(@ModelAttribute("produto")Produto produto) throws SQLException {
-    	ProdutoService service = new ProdutoService();
-    	produto = service.pegarProduto(produto.getId());
-    	return new ModelAndView("mostrarProduto").addObject("produto", produto);
+
+    @RequestMapping(value = "/getProduto", method = RequestMethod.POST, params = "action=edit")
+    public ModelAndView editar(@ModelAttribute("produto") Produto produto) throws SQLException {
+        ProdutoService service = new ProdutoService();
+        System.out.println(produto.getNome());
+        produto = service.pegarProduto(produto.getId());
+        return new ModelAndView("mostrarProduto").addObject("produto", produto);
     }
+
     
-    /*
-    @PostMapping(value="/getProduto", params="action=edit")
+   /* @PostMapping(value="/getProduto", params="action=edit")
     public ModelAndView editar02(@ModelAttribute("produto")Produto produto) throws SQLException {
     	ProdutoService service = new ProdutoService();
     	produto = service.pegarProduto(produto.getId());
     	return new ModelAndView("mostrarProduto").addObject("produto", produto);
     }*/
     
+    @GetMapping("/{id}")
+    public ModelAndView excluir(@PathVariable("id") int id) throws SQLException{
 
-    
-    
+        ProdutoService service = new ProdutoService();
+        Produto produto = service.pegarProduto(id);
+        service.deleteProduto(id);
+        return new ModelAndView("GerenciarProdutos");
+                
+       // service.delete(id);
+
+       // return findAll();
+    }
+
 }
